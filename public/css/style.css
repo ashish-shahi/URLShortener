@@ -1,0 +1,239 @@
+:root {
+    --page-bg: #1e1e1c;
+    --card-bg: #2c2c2a;
+    --text-primary: #f0efe9;
+    --text-secondary: #a0a0a0;
+    --text-accent: #6ea8dc;
+    --button-bg: #f0efe9;
+    --button-text: #1a1a1a;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --error-color: #e05c5c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 360px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem 1.75rem;
+}
+
+.auth-card h2 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.error-msg {
+    background-color: rgba(224, 92, 92, 0.15);
+    color: var(--error-color);
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+form input {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+form input::placeholder {
+    color: var(--text-secondary);
+}
+
+form input:focus {
+    outline: none;
+    border-color: var(--text-accent);
+}
+
+form button {
+    width: 100%;
+    height: 42px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+form button:hover {
+    opacity: 0.9;
+}
+
+.footer-text {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 1.25rem;
+}
+
+.footer-text a {
+    color: var(--text-accent);
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+.dashboard-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-header h2 {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-link {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    border-color: var(--text-accent);
+}
+
+.btn-link.logout {
+    color: var(--text-secondary);
+}
+
+.url-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.url-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.url-info {
+    overflow: hidden;
+}
+
+.short-url {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-accent);
+    margin-bottom: 2px;
+}
+
+.original-url {
+    font-size: 12px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 380px;
+}
+
+.url-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.btn-small {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-small:hover {
+    border-color: var(--text-accent);
+}
+
+.btn-danger {
+    color: var(--error-color);
+    border-color: rgba(224, 92, 92, 0.3);
+}
+
+.btn-danger:hover {
+    border-color: var(--error-color);
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    padding: 3rem 0;
+}
