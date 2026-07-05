@@ -1,0 +1,19 @@
+CREATE DATABASE IF NOT EXISTS urlshortener;
+USE urlshortener;
+
+CREATE TABLE IF NOT EXISTS users(
+    user_id CHAR(36) PRIMARY KEY,
+    user_name VARCHAR(100),
+    user_email VARCHAR(255) NOT NULL UNIQUE,
+    user_pass VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS urls(
+    id CHAR(36) PRIMARY KEY,
+    url VARCHAR(2048),
+    short_url VARCHAR(10) UNIQUE,
+    user_id CHAR(36),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
