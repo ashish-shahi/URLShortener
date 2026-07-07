@@ -190,6 +190,7 @@ form button:hover {
     font-weight: 500;
     color: var(--text-accent);
     margin-bottom: 2px;
+    text-decoration: none;
 }
 
 .original-url {
@@ -203,19 +204,30 @@ form button:hover {
 
 .url-actions {
     display: flex;
+    align-items: center;
     gap: 8px;
     flex-shrink: 0;
 }
 
 .btn-small {
+    height: 32px;
+    padding: 0 14px;
     font-size: 12px;
-    padding: 6px 12px;
+    font-family: inherit;
+    font-weight: 400;
     border-radius: 6px;
     border: 1px solid var(--border-color);
     background: transparent;
     color: var(--text-primary);
     cursor: pointer;
     text-decoration: none;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .btn-small:hover {
@@ -229,6 +241,12 @@ form button:hover {
 
 .btn-danger:hover {
     border-color: var(--error-color);
+}
+
+.inline-form {
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
 }
 
 .empty-state {

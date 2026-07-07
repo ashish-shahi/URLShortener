@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - URL Shortener</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <div class="dashboard-header">
+            <h2>Your links</h2>
+            <div class="header-actions">
+                <a href="/create-url" class="btn-link">+ New URL</a>
+                <a href="/logout" class="btn-link logout">Logout</a>
+            </div>
+        </div>
+
+        <% if (typeof urls !== 'undefined' && urls.length > 0) { %>
+            <div class="url-list">
+                <% urls.forEach(function(item) { %>
+                    <div class="url-card">
+                        <div class="url-info">
+                            <a href="<%= baseUrl %>/url/<%= item.short_url %>"  target="_blank" rel="noopener noreferrer" class="short-url"><%= baseUrl %>/url/<%= item.short_url %></a>
+                            <p class="original-url"><%= item.url %></p>
+                        </div>
+                        <div class="url-actions">
+                            <a href="/edit-url/<%= item.id %>" class="btn-small">Edit</a>
+                            <form method="POST" action="/delete-url/<%= item.id %>?_method=DELETE" class="inline-form">
+                                <button type="submit" class="btn-small btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p class="empty-state">You haven't created any short URLs yet.</p>
+        <% } %>
+    </div>
+</body>
+</html>
