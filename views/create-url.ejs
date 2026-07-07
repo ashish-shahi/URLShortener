@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create URL - URL Shortener</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="auth-card">
+            <h2>Create a short URL</h2>
+            <p class="subtitle">Paste a long link and get a short one</p>
+
+            <% if (typeof error !== 'undefined' && error) { %>
+                <p class="error-msg"><%= error %></p>
+            <% } %>
+
+            <form method="POST" action="/create-url">
+                <label for="url">Original URL</label>
+                <input type="url" id="url" name="url" placeholder="https://example.com/very/long/path" required>
+
+                <button type="submit">Shorten it</button>
+            </form>
+
+            <p class="footer-text">
+                <a href="/dashboard">Back to dashboard</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
