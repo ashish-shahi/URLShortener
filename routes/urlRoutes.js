@@ -78,4 +78,54 @@ router.delete('/delete-url/:id', async (req, res) => {
     }
 });
 
+router.get('/edit-url/:id', async (req, res) => {
+    if (!req.session.user_id) {
+        return res.redirect('/login');
+    }
+    let { id } = req.params;
+    try {
+        let db = await getConnection();
+        let q = `SELECT * FROM urls where id = ?`;
+        let [url_info] = await db.query(q, id);
+        let urlDetails = [url_info[0].url, url_info[0].short_url, url_info[0].id];
+        res.render('edit-url', {urlDetails});
+    } catch (err) {
+        console.log(err);
+        res.send('Something went wrong in DB');
+    }
+});
+
+router.patch('/edit-url/:id', async (req, res) => {
+    let { id } = req.params;
+    let { url } = req.body;
+    if(!isValidUrl(url)) {
+        return res.render('/edit-url', {error: 'Invalid URL'});
+    } else {
+        try {
+            let db = await getConnection();
+            let q = `SELECT * FROM urls where url = ?`;
+            let [urlInfo] = await db.query(q, url);
+            let q2 = `SELECT * FROM urls WHERE id = ?`;
+            let [existingUrl] = await db.query(q2, id);
+            let url_info = [url, id];
+            if (urlInfo.length) {
+                let urlDetails = [url, existingUrl[0].short_url, existingUrl[0].id];
+                return res.render(`edit-url`, {error: 'URL already in use', urlDetails});
+            } else {
+                try {
+                    let q1 = `UPDATE urls SET url = ? WHERE id = ?`;
+                    let [result] = await db.query(q1, url_info);
+                    res.redirect('/dashboard');
+                } catch (err) {
+                    console.log(err);
+                    res.send('Something went wrong in DB');
+                }
+            }
+        } catch (err) {
+            console.log(err);
+            res.send('Something went wrong in DB');
+        }
+    }
+});
+
 module.exports = router;

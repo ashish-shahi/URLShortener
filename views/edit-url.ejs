@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit URL - URL Shortener</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="auth-card">
+            <h2>Edit your URL</h2>
+            <p class="subtitle">Update where this short link points</p>
+
+            <% if (typeof error !== 'undefined' && error) { %>
+                <p class="error-msg"><%= error %></p>
+            <% } %>
+
+            <form method="POST" action="/edit-url/<%= urlDetails[2] %>?_method=PATCH">
+                <label for="url">Original URL</label>
+                <input type="url" id="url" name="url" value="<%= urlDetails[0] %>" required>
+
+                <label for="short_url">Short code</label>
+                <input type="text" id="short_url" value="<%= urlDetails[1] %>" disabled>
+
+                <button type="submit">Save changes</button>
+            </form>
+
+            <p class="footer-text">
+                <a href="/dashboard">Back to dashboard</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
