@@ -103,8 +103,8 @@ router.patch('/edit-url/:id', async (req, res) => {
     } else {
         try {
             let db = await getConnection();
-            let q = `SELECT * FROM urls where url = ?`;
-            let [urlInfo] = await db.query(q, url);
+            let q = `SELECT * FROM urls where url = ? AND user_id = ?`;
+            let [urlInfo] = await db.query(q, [url, req.session.user_id]);
             let q2 = `SELECT * FROM urls WHERE id = ?`;
             let [existingUrl] = await db.query(q2, id);
             let url_info = [url, id];
